@@ -47,7 +47,7 @@ export default function App() {
     const stopSound = async () => {
         setIsPlaying(false);
         await sound.stopAsync();
-    }
+    };
 
     return (
         <SafeAreaView
