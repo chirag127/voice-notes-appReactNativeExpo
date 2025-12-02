@@ -1,0 +1,29 @@
+name: Badges
+
+'badges' : [
+  {
+    'text': 'Build Status',
+    'imageUrl': 'https://img.shields.io/github/actions/workflow/status/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/ci.yml?style=flat-square',
+    'linkUrl': 'https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/actions'
+  },
+  {
+    'text': 'Code Coverage',
+    'imageUrl': 'https://img.shields.io/codecov/c/github/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square',
+    'linkUrl': 'https://codecov.io/gh/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App'
+  },
+  {
+    'text': 'Tech Stack',
+    'imageUrl': 'https://img.shields.io/badge/tech-stack-RN%2C%20Expo%2C%20TS-blue?style=flat-square',
+    'linkUrl': '#tech-stack'
+  },
+  {
+    'text': 'License',
+    'imageUrl': 'https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgray?style=flat-square',
+    'linkUrl': 'LICENSE'
+  },
+  {
+    'text': 'GitHub Stars',
+    'imageUrl': 'https://img.shields.io/github/stars/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square',
+    'linkUrl': 'https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/stargazers'
+  }
+]
