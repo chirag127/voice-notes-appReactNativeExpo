@@ -1,36 +1,62 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# OS generated files
+.DS_Store
+Thumbs.db
 
-# dependencies
+# Node.js dependency directories
 node_modules/
 
-# Expo
-.expo/
+# Production build output
+build/
 dist/
-web-build/
-expo-env.d.ts
 
-# Native
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
+# Expo / React Native specific directories and files
+.expo/
+*.local
+assets/cache/
+android/build/
+android/app/build/
+ios/build/
 
-# Metro
-.metro-health-check*
+# IDE / Editor specific files
+.vscode/
+.idea/
+*.iml
+*.env
+.env.*
+*.env.local
+*.env.development.
+*.env.production.
+*.env.test.
 
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
+# Log files
+*.log
+logs/
 
-# macOS
-.DS_Store
-*.pem
+# Testing files
+coverage/
+*.test.ts.snap
+*.snap
 
-# local env files
-.env*.local
+# Dependency cache
+.pnp
+.pnp.js
 
-# typescript
-*.tsbuildinfo
+# Bundle output
+.bundle/
+
+# Misc
+*.DS_Store
+Jenkinsfile
+*.swp
+*.swo
+*.lock
+.env.local
+*.local
+*.user
+*.config
+*.backup
+*.tmp
+*.bak
+*.swp
+*.swo
+*.un~
