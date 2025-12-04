@@ -1,62 +1,100 @@
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Node.js dependency directories
+# Ignore package manager files
+npm_modules/
 node_modules/
+.pnp
+.pnp.js
+yarn-error.log
 
-# Production build output
+# Ignore build output
+.expo/
+.next/
 build/
 dist/
+release/
 
-# Expo / React Native specific directories and files
-.expo/
-*.local
-assets/cache/
-android/build/
-android/app/build/
-ios/build/
-
-# IDE / Editor specific files
+# Ignore IDE/editor specific files
 .vscode/
 .idea/
 *.iml
-*.env
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files (sensitive information)
+.env
 .env.*
-*.env.local
-*.env.development.
-*.env.production.
-*.env.test.
+!.env.example
 
-# Log files
+# Ignore log files
 *.log
-logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Testing files
-coverage/
-*.test.ts.snap
-*.snap
-
-# Dependency cache
-.pnp
-.pnp.js
-
-# Bundle output
-.bundle/
-
-# Misc
-*.DS_Store
-Jenkinsfile
-*.swp
-*.swo
-*.lock
-.env.local
-*.local
-*.user
-*.config
-*.backup
+# Ignore temporary files and cache
 *.tmp
-*.bak
 *.swp
-*.swo
-*.un~
+.eslintcache
+.babelcache/
+
+# Ignore Expo specific build artifacts
+.expo-temp/
+
+# Ignore testing artifacts
+coverage/
+.nyc_output/
+
+# Ignore Mac/Linux specific files
+.DS_Store
+.DS_Store?*
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Ignore Windows specific files
+Thumbs.db
+
+# Ignore deployment artifacts
+.serverless/
+serverless.yml
+
+# Ignore secrets and credentials (explicitly if not covered by .env.*)
+*.key
+*.pem
+credentials.json
+
+# Ignore specific editorconfig files
+.editorconfig
+
+# Ignore platform specific build artifacts (Android)
+android/build/
+android/app/build/
+android/app/src/main/jniLibs/
+android/gradle/
+
+# Ignore platform specific build artifacts (iOS)
+iOS/build/
+iOS/Pods/
+iOS/User/
+
+# Ignore Expo app builds
+*.apk
+*.ipa
+
+# Ignore runtime dependencies
+*.node
+
+# Ignore other common ignores
+*.local
+*.patch
+*.swp
+COMMIT_EDITMSG
+MERGE_MSG
+
+# Specific to React Native/Expo builds, might need adjustment based on exact setup
+.rncache
+
+# Ignore generated files from tooling if any
+*.tsbuildinfo
