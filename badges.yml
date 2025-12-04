@@ -1,29 +1,45 @@
-name: Badges
+badges:
+  - name: Build Status
+    badge_type: github-actions
+    options:
+      workflow_id: ci.yml
+      label: Build
+      logo: github
+      color: blue
+    markdown: "[![Build Status](https://img.shields.io/github/actions/workflow/status/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/ci.yml?style=flat-square&label=Build)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/actions/workflows/ci.yml)"
 
-'badges' : [
-  {
-    'text': 'Build Status',
-    'imageUrl': 'https://img.shields.io/github/actions/workflow/status/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/ci.yml?style=flat-square',
-    'linkUrl': 'https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/actions'
-  },
-  {
-    'text': 'Code Coverage',
-    'imageUrl': 'https://img.shields.io/codecov/c/github/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square',
-    'linkUrl': 'https://codecov.io/gh/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App'
-  },
-  {
-    'text': 'Tech Stack',
-    'imageUrl': 'https://img.shields.io/badge/tech-stack-RN%2C%20Expo%2C%20TS-blue?style=flat-square',
-    'linkUrl': '#tech-stack'
-  },
-  {
-    'text': 'License',
-    'imageUrl': 'https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgray?style=flat-square',
-    'linkUrl': 'LICENSE'
-  },
-  {
-    'text': 'GitHub Stars',
-    'imageUrl': 'https://img.shields.io/github/stars/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square',
-    'linkUrl': 'https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/stargazers'
-  }
-]
+  - name: Code Coverage
+    badge_type: codecov
+    options:
+      coverage: 100
+      label: Coverage
+      color: brightgreen
+    markdown: "[![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square&token=TOKEN_PLACEHOLDER)](https://codecov.io/gh/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App)"
+
+  - name: Language
+    badge_type: language
+    options:
+      language: TypeScript
+      color: blue
+    markdown: "[![Language](https://img.shields.io/badge/Language-TypeScript-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)"
+
+  - name: Framework
+    badge_type: badge
+    options:
+      label: Framework
+      message: React Native + Expo
+      color: 61dafb
+    markdown: "[![Framework](https://img.shields.io/badge/Framework-React%20Native%20%2B%20Expo-61dafb?style=flat-square&logo=react)](https://reactnative.dev/)"
+
+  - name: License
+    badge_type: license
+    options:
+      license: CC-BY-NC-4.0
+      color: lightgrey
+    markdown: "[![License](https://img.shields.io/github/license/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square)](LICENSE)"
+
+  - name: GitHub Stars
+    badge_type: github-stars
+    options:
+      color: yellow
+    markdown: "[![GitHub Stars](https://img.shields.io/github/stars/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square&color=yellow)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App)"
