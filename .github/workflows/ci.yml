@@ -1,62 +1,131 @@
-name: CI
+name: EchoNote CI/CD Pipeline
 
-# This workflow will do a compile, test, lint, and deploy via GitHub Actions.
-# More info: https://docs.github.com/en/actions/automating-build-and-test-with-github-actions
+# ----------------------------------------------------------------------------
+# APEX TECHNICAL AUTHORITY CI/CD STANDARD (React Native / Expo)
+# This workflow enforces quality gates for the mobile application build process.
+# Utilizes modern caching and parallel steps for velocity.
+# ----------------------------------------------------------------------------
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, develop ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
-  build-and-test:
+  # --- 1. BUILD & LINTING JOB (Fast Feedback) ---
+  lint_and_format:
+    name: Lint & Format Check (Ruff/Biome Equivalent)
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x] # Test against multiple Node.js versions
-
     steps:
-    - name: Checkout repository
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '20.x'
         cache: 'npm'
-        cache-dependency-path: '**/*.tsbuildinfo'
 
-    - name: Install dependencies
-      run: npm ci --force # Use npm ci for faster, more reliable installs
+    - name: Install Dependencies
+      run: npm ci
 
-    - name: Lint with Biome
-      run: npx @biomejs/biome lint .
+    - name: Verify Code Quality (Biome/TypeScript Check)
+      run: npx tsc --noEmit && npx @biomejs/biome check --no-apply . 
 
-    - name: Format with Biome
-      run: npx @biomejs/biome format --write .
+    - name: Run ESLint (Legacy Check)
+      run: npx eslint . --ext .ts,.tsx,.js,.jsx
 
-    - name: Build Project (Expo Prebuild/EAS Build Preparation)
-      run: npm run eas-build-prebuild # This command simulates prebuild or prepares for EAS Build
+  # --- 2. UNIT TESTING JOB ---
+  unit_test:
+    name: Run Vitest Unit Tests
+    needs: lint_and_format
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
 
-    - name: Run Unit Tests with Vitest
-      run: npm run test:unit # Assuming a script for running Vitest tests
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
 
-    # Playwright E2E tests would typically run on a specific environment or after build.
-    # For CI, we might simulate this or run against a development build.
-    # Example placeholder:
-    # - name: Run E2E Tests with Playwright
-    #   run: npm run test:e2e # Assuming a script for running Playwright tests
+    - name: Install Dependencies
+      run: npm ci
 
-    # Example for deploying to a staging/test environment (if applicable)
-    # - name: Deploy to Staging
-    #   if: github.ref == 'refs/heads/main'
-    #   run: npm run deploy:staging # Placeholder for deployment script
+    - name: Run Vitest Unit Tests
+      run: npx vitest run --coverage --outputFile coverage/coverage.xml
 
-    # Example for code coverage reporting (requires Codecov or similar)
-    # - name: Upload coverage reports to Codecov
-    #   uses: codecov/codecov-action@v4
-    #   with:
-    #     token: ${{ secrets.CODECOV_TOKEN }} # Ensure CODECOV_TOKEN is set in repository secrets
-    #     fail_ci_if_error: true
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: coverage/coverage.xml
+        name: echo-note-mobile-app
+        flags: unit
+
+  # --- 3. TYPE CHECK & STATIC ANALYSIS JOB (If E2E is not feasible in CI) ---
+  # For mobile apps, full E2E in CI is often complex (emulator setup). 
+  # We prioritize robust static typing and integration testing locally/on PR, 
+  # but this step ensures Expo config validity.
+  config_validation:
+    name: Expo Config Validation
+    needs: unit_test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Validate Expo Config
+      run: npx expo doctor --strict
+
+  # --- 4. BUILD STAGE (For artifacts, typically managed via EAS Build externally) ---
+  # This job only performs a minimal successful build simulation or generates artifacts if EAS is configured.
+  build_simulation:
+    name: Simulate Build (Pre-EAS)
+    needs: config_validation
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm ci
+
+    - name: Build Web/Preview Artifact (Simulated)
+      # In a true production setup, this would trigger an EAS build via 'eas build -p all'
+      run: npx expo export --output-dir dist/web_build
+
+    - name: Archive Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: web-artifact
+        path: dist/web_build
+        retention-days: 5
+
+  # --- 5. RELEASE TO MAIN (Deployment Gate) ---
+  release_approval:
+    name: Deploy to Production
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build_simulation
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - name: Notify on Successful Main Merge (Placeholder)
+      run: echo "CI/CD successful on main. Trigger EAS build/release process for EchoNote."
