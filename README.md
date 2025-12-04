@@ -1,86 +1,67 @@
-# 🎵 EchoNote-AI-Voice-Notes-React-Native-Mobile-App
+# 🎙️ EchoNote-AI-Voice-Notes-React-Native-Mobile-App
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/ci.yml?style=flat-square)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/actions/workflows/ci.yml)
-[![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square)](https://codecov.io/github/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App)
-[![Language](https://img.shields.io/github/languages/top/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square&color=blue)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App)
-[![License](https://img.shields.io/github/license/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square)](LICENSE)
-[![GitHub Stars](https://img.shields.io/github/stars/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=social)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App)
+[![Build Status](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/actions/workflows/ci.yml/badge.svg)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/actions/workflows/ci.yml)
+[![Code Coverage](https://codecov.io/gh/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/branch/main/graph/badge.svg)](https://codecov.io/gh/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App)
+[![Language](https://img.shields.io/badge/Language-TypeScript-blue.svg?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Framework](https://img.shields.io/badge/Framework-React%20Native%20Expo-68A0CF.svg?style=flat-square&logo=react&logoColor=white)](https://docs.expo.dev/)
+[![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg?style=flat-square)](LICENSE)
+[![GitHub Stars](https://img.shields.io/github/stars/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=flat-square&logo=github)](https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App/stargazers)
 
-<p align="center">
-  <a href="https://stars.github.com/users/chirag127/" target="_blank">
-    <img src="https://img.shields.io/github/stars/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App?style=social&label=Star+This+Repo" alt="Star This Repo"/>
-  </a>
-</p>
-
-EchoNote redefines mobile productivity by transforming spoken words into structured, actionable insights using advanced cloud AI services. Seamlessly record, transcribe, and organize complex audio thoughts into tagged, summarized notes directly on your device.
-
-This repository houses the complete, production-ready codebase for a cutting-edge mobile application developed using the modern React Native/Expo ecosystem.
+⭐ Star this Repo if you find it valuable! ⭐
 
 ---
 
-## 🏗️ Architecture Overview
+**EchoNote** is a cutting-edge mobile productivity application built with React Native and Expo that transforms on-the-go voice recordings into structured, actionable knowledge. It utilizes advanced AI services for real-time transcription, intelligent summarization, and automatic context-based tagging.
 
-This mobile application adheres to the **Feature-Sliced Design (FSD)** pattern for scalable state management and component isolation, ensuring maintainability across complex features like real-time audio processing and remote AI summarization.
+This project represents a fusion of mobile development excellence and applied machine learning, adhering strictly to the architectural mandates set by the Apex Technical Authority.
 
-mermaid
-graph TD
-    A[Start Recording] --> B{Audio Buffer};
-    B --> C[Local Processing / Pre-processing];
-    C --> D[Cloud Speech-to-Text API];
-    D --> E[Raw Transcription Text];
-    E --> F{AI Analysis Engine (e.g., Gemini)};
-    F -- Summarization/Tagging --> G[Structured Note Object];
-    G --> H[Local Persistence (AsyncStorage/Realm)];
-    H --> I[UI Render: Notes List / Detail View];
-    I -- User Interaction --> A;
+## 🚀 Architecture Overview
 
-    subgraph Mobile Stack
-        C & I
-    end
-    subgraph Cloud Services
-        D & F
-    end
+The application follows a structured, component-based architecture inspired by Feature-Sliced Design principles adapted for React Native/Expo. The core logic separates concerns into State, Domain, Data, and Presentation layers for maximum maintainability and scalability.
+
+ascii
+              EchoNote Mobile App (React Native/Expo)
+                            |
+         +------------------+------------------+
+         |      Presentation Layer (UI/UX)    |
+         | (Components, Screens, Navigation)  |
+         +------------------+------------------+
+                            |
+         +------------------+------------------+
+         |        Domain Layer (Business Logic) |
+         | (State Management, Business Rules)   |
+         +------------------+------------------+
+                            |
+         +------------------+------------------+
+         |         Data Layer (Adapters)       |
+         | (API Clients: Transcription/AI, DB) |
+         +------------------+------------------+
+                            |
+         +------------------+------------------+
+         |          Infrastructure (Expo SDK)  |
+         +------------------------------------+
 
 
-## 🧭 Table of Contents
+## 📋 Table of Contents
 
-1.  [🎵 EchoNote-AI-Voice-Notes-React-Native-Mobile-App](#-echonote-ai-voice-notes-react-native-mobile-app)
-2.  [🏗️ Architecture Overview](#-architecture-overview)
-3.  [🧭 Table of Contents](#-table-of-contents)
-4.  [✨ Key Features](#-key-features)
-5.  [🛠️ Technology Stack (The Apex Toolchain)](#-technology-stack-the-apex-toolchain)
-6.  [🤖 AI Agent Directives (APEX STANDARDS)](#-ai-agent-directives-apex-standards)
-7.  [🚀 Development & Setup](#-development--setup)
-8.  [🤝 Contribution Guidelines](#-contribution-guidelines)
-9.  [⚖️ License](#-license)
+1.  [🚀 Architecture Overview](#-architecture-overview)
+2.  [📋 Table of Contents](#-%EF%B8%8F-table-of-contents)
+3.  [💡 Key Features](#-%EF%B8%9F-key-features)
+4.  [🤖 AI Agent Directives (APEX Protocol)](#-%F0%9F%A7%90-ai-agent-directives-apex-protocol)
+5.  [🛠️ Development & Setup](#-%EF%B8%8F-development--setup)
+6.  [📜 Compliance & Licensing](#-%F0%9F%93%9C-compliance--licensing)
 
-## ✨ Key Features
+## 💡 Key Features
 
-*   **Real-Time Voice Capture:** High-fidelity audio recording leveraging native device capabilities via Expo modules.
-*   **Intelligent Transcription:** Integration with leading STT providers for industry-leading accuracy.
-*   **AI Summarization:** Utilizes LLMs to condense long recordings into key bullet points and action items.
-*   **Automatic Tagging:** AI-driven topic extraction to auto-categorize notes for quick retrieval.
-*   **Offline Caching:** Ensures core note viewing and basic functionality remains available offline.
-*   **Secure Persistence:** Utilizing robust local storage solutions compliant with mobile best practices.
+*   **Seamless Voice Recording:** High-fidelity audio capture managed via Expo APIs.
+*   **Real-Time Transcription:** Instantaneous conversion of speech to text using cloud-based ASR services.
+*   **Intelligent Summarization:** AI analyzes long transcripts to generate concise, bulleted summaries.
+*   **Automatic Tagging:** ML models infer context and apply relevant organizational tags (e.g., `Meeting`, `Idea`, `To-Do`).
+*   **Offline Caching:** Local persistence via Realm/SQLite for immediate access.
 
-## 🛠️ Technology Stack (The Apex Toolchain)
+## 🤖 AI Agent Directives (APEX Protocol)
 
-This project is engineered using the **LATE 2025/2026 APEX Standards** for mobile application development:
-
-| Layer | Technology | Rationale |
-| :--- | :--- | :--- |
-| **Platform** | React Native (w/ Expo) | Maximum cross-platform reach and rapid iteration. |
-| **Language** | TypeScript (Strict Mode) | Enforced type safety and reduced runtime errors. |
-| **Styling** | TailwindCSS (via Nativewind) | Utility-first styling for responsive, consistent UI. |
-| **State Mgmt** | Zustand / React Context | Lightweight, fast, and scalable state primitives. |
-| **Architecture** | Feature-Sliced Design (FSD) | Strict module boundaries for long-term maintainability. |
-| **Testing** | Vitest / Playwright | Unit testing via Vitest; E2E testing via Playwright integration. |
-| **Build Tool** | Vite 7 | Blazing fast bundling and development server. |
-
-## 🤖 AI Agent Directives (APEX STANDARDS)
-
-<details>
-<summary>Click to Expand: APEX TECHNICAL AUTHORITY Directives for this Repository</summary>
+<details><summary><strong>View Apex Technical Directives for Future Development</strong></summary>
 
 # SYSTEM: APEX TECHNICAL AUTHORITY & ELITE ARCHITECT (DECEMBER 2025 EDITION)
 
@@ -90,7 +71,7 @@ This project is engineered using the **LATE 2025/2026 APEX Standards** for mobil
 **Output Standard:** Deliver **EXECUTION-ONLY** results. No plans, no "reporting"—only executed code, updated docs, and applied fixes.
 **Philosophy:** "Zero-Defect, High-Velocity, Future-Proof."
 
---- 
+---
 
 ## 2. INPUT PROCESSING & COGNITION
 *   **SPEECH-TO-TEXT INTERPRETATION PROTOCOL:**
@@ -98,86 +79,66 @@ This project is engineered using the **LATE 2025/2026 APEX Standards** for mobil
     *   **Semantic Correction:** **STRICTLY FORBIDDEN** from executing literal typos. You must **INFER** technical intent based on the project context.
     *   **Logic Anchor:** Treat the `README.md` as the **Single Source of Truth (SSOT)**.
 *   **MANDATORY MCP INSTRUMENTATION:**
-    *   **No Guessing:** Do not hallucinate APIs. Focus strictly on React Native/Expo APIs for mobile interaction and known cloud SDKs (e.g., Google/Azure for AI).
-    *   **Research First:** Use `linkup`/`brave` to search for **December 2025 Industry Standards** in React Native performance, native module integration, and mobile security (iOS/Android sandboxing).
-    *   **Validation:** Use `docfork` to verify *every* React Native/Expo API signature, especially audio/microphone permissions.
-    *   **Reasoning:** Engage `clear-thought-two` to architect complex flows *before* writing code, focusing heavily on async handling for I/O bound tasks (Audio Recording & Cloud API calls).
+    *   **No Guessing:** Do not hallucinate APIs. This project requires verified APIs for **Google Gemini (or OpenAI equivalent)** for summarization and a robust **ASR provider** (e.g., Google Speech-to-Text or Whisper). 
+    *   **Research First:** Use `linkup`/`brave` to search for **December 2025 Industry Standards** for React Native performance optimization, Expo SDK v52+ features, and **Mobile Security Protocols** (e.g., key chain storage for API keys).
+    *   **Validation:** Use `docfork` to verify *every* external SDK signature, especially for platform-specific modules (Audio Recorder).
+    *   **Reasoning:** Engage `clear-thought-two` to architect complex state flows (e.g., handling interrupted recording states) *before* writing code.
 
---- 
+---
 
 ## 3. CONTEXT-AWARE APEX TECH STACKS (LATE 2025 STANDARDS)
-**Directives:** This repository is a **Mobile Application**.
+**Directives:** This repository, `EchoNote-AI-Voice-Notes-React-Native-Mobile-App`, is a **Mobile Application** project.
 
-*   **PRIMARY SCENARIO: WEB / APP / GUI (Modern Frontend/Mobile)**
-    *   **Stack:** **TypeScript 6.x** (Strict), **Vite 7** (as bundler), **NativeWind** (for TailwindCSS implementation on RN), **Playwright** (for E2E testing across device simulators).
-    *   **Architecture:** Enforce **Feature-Sliced Design (FSD)**. Components must be strictly separated into `shared`, `entities`, `features`, and `pages` layers.
-    *   **Lint/Test:** **Biome** (for JS/TS linting/formatting) + **Vitest** (Unit) + **Playwright** (E2E).
-    *   **State:** Utilize **Zustand** for global state, adhering to the principle of **Colocation** where possible.
-    *   **AI Integration Focus:** Prioritize efficient handling of large audio blobs before transmission; implement local optimistic UI updates while awaiting cloud transcription results.
+*   **PRIMARY SCENARIO A: WEB / APP / GUI (Modern Frontend - Mobile Adapted)**
+    *   **Stack:** **TypeScript (Strict)** enforced via `tsconfig.json`. **React Native 0.74+** running on **Expo SDK 52+**.
+    *   **Lint/Test:** **Biome** (for industry-leading speed in linting/formatting) + **Vitest** (for component/unit testing) + **Playwright** (for E2E testing on mobile simulators/devices, focusing on hardware interactions).
+    *   **Architecture:** **Feature-Sliced Design (FSD)** applied to the codebase structure, separating features into `entities`, `features`, `pages`, `shared`, and `widgets` directories for clear dependency graphs.
+    *   **State Management:** Standardized on modern **Signals** or **Zustand** for centralized, predictable state.
 
-## 4. ARCHITECTURAL MANDATES
-*   **SOLID Principles:** Must be strictly applied, especially Single Responsibility (SR) when dealing with audio I/O vs. AI business logic.
-*   **DRY Principle:** Avoid duplicating UI logic, utilize shared components heavily.
-*   **YAGNI:** Only implement features explicitly requested or required for the core MVP (Record, Transcribe, Summarize).
-
-## 5. VERIFICATION COMMANDS (Development Cycle)
-*   **LINT & FORMAT (Biome Check):** `npx @biomejs/biome check --apply --apply-unsafe .`
-*   **UNIT TESTS (Vitest):** `npm test` (or `npx vitest`)
-*   **E2E TESTS (Playwright):** `npx playwright test`
-*   **START DEVELOPMENT SERVER:** `npx expo start`
+## 4. VERIFICATION & EXECUTION
+*   **Verification Commands:**
+    *   `npm run lint`: Execute Biome check across the entire codebase.
+    *   `npm run test:unit`: Run Vitest suite against domain and data logic.
+    *   `npm run test:e2e`: Execute Playwright tests covering recording -> transcription -> summarization flow.
+    *   `npm run build:apk` / `npm run build:ios`: Validate successful mobile build artifact generation via EAS.
 
 </details>
 
-## 🚀 Development & Setup
+## 🛠️ Development & Setup
 
-Follow these steps to establish the development environment according to 2026 standards.
+This project utilizes TypeScript for type safety and Expo for rapid cross-platform deployment.
 
 ### Prerequisites
-Ensure you have Node.js (v20+), npm/yarn/pnpm, Expo CLI, and necessary native development environments (Android Studio/Xcode) installed.
+Ensure you have Node.js (v18+), npm/yarn/pnpm, and the Expo CLI installed.
 
-### Installation
-
+### Initialization
 bash
-# 1. Clone the repository
 git clone https://github.com/chirag127/EchoNote-AI-Voice-Notes-React-Native-Mobile-App.git
 cd EchoNote-AI-Voice-Notes-React-Native-Mobile-App
 
-# 2. Use uv-equivalent for JS dependency resolution (npm/pnpm/yarn are standard in RN)
-pnpm install 
-# or npm install / yarn install
-
-# 3. Configure Environment Variables (e.g., API Keys)
-# Create a .env file in the root directory and populate required keys (e.g., STT_API_KEY, AI_SERVICE_URL)
-cp .env.example .env
-
-# 4. Run the application
-npx expo start
+# Using uv (as recommended for modern JS ecosystems via package managers)
+# Install dependencies using your preferred package manager
+pnpm install
 
 
-### Scripts Reference
+### Development Scripts
+| Command | Description | Standard Followed |
+| :--- | :--- | :--- |
+| `npm run dev` | Start Metro bundler for local development on iOS/Android simulators. | High-Velocity |
+| `npm run lint` | Run Biome to check formatting and TypeScript strictness. | Zero-Defect |
+| `npm run test` | Execute Vitest unit and integration tests. | Verification |
+| `npm run test:e2e` | Run Playwright end-to-end hardware interaction tests. | Future-Proof |
+| `eas build -p all` | Build production artifacts (APK/IPA) via Expo Application Services. | Deployment |
 
-| Command | Description |
-| :--- | :--- |
-| `pnpm start` | Starts the Expo development server. |
-| `pnpm test` | Runs all Vitest unit and component tests. |
-| `pnpm lint:fix` | Formats and lints codebase using Biome. |
-| `pnpm e2e:run` | Executes end-to-end tests via Playwright. |
-| `pnpm build:ios` | Creates an optimized production build for iOS. |
+### Core Architectural Principles Enforced
+1.  **SOLID:** Especially Single Responsibility (SRP) in data adapters.
+2.  **DRY:** Logic for transcription handling must be abstracted.
+3.  **YAGNI:** Only implement features required for core note-taking immediately.
 
-## 🤝 Contribution Guidelines
+## 📜 Compliance & Licensing
 
-We adhere to a strict Quality Gate process. All contributions must pass automated checks and be reviewed against the FSD architecture principles. Please consult the dedicated contribution file for full details.
+This repository is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License**.
 
-See [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for details on submitting pull requests.
-
-## 🛡️ Security
-
-Security vulnerabilities are treated with the highest priority. Please refer to our security policy for responsible disclosure.
-
-See [.github/SECURITY.md](./.github/SECURITY.md) for details.
-
-## ⚖️ License
-
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License**.
+Feel free to use, modify, and share the code for any non-commercial purpose, provided you give appropriate credit.
 
 See the [LICENSE](./LICENSE) file for full details.
